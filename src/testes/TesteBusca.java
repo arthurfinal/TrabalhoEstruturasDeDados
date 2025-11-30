@@ -23,4 +23,18 @@ public class TesteBusca {
 
         return tempoTotal / REPETICOES;
     }
+
+    public static double testarBuscaBinaria(int[] dadosOrdenados, int valor) {
+        Cronometro cronometro = new Cronometro();
+        double tempoTotal = 0;
+
+        for (int r = 0; r < REPETICOES; r++) {
+            cronometro.iniciar();
+            BuscaBinaria.buscar(dadosOrdenados, valor);
+            cronometro.parar();
+            tempoTotal += cronometro.getTempoEmMilissegundos();
+        }
+
+        return tempoTotal / REPETICOES;
+    }
 }
