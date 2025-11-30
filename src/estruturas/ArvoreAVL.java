@@ -100,5 +100,20 @@ public class ArvoreAVL {
     return no;
 }
 
+// Busca
+    public boolean buscar(int valor) {
+        return buscarRecursivo(raiz, valor);
+    }
 
+    private boolean buscarRecursivo(No atual, int valor) {
+        if (atual == null) {
+            return false;
+        }
+        if (valor == atual.valor) {
+            return true;
+        }
+        return valor < atual.valor
+            ? buscarRecursivo(atual.esquerda, valor)
+            : buscarRecursivo(atual.direita, valor);
+    }
 }
