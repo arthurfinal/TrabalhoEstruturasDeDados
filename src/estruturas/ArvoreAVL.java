@@ -32,4 +32,19 @@ public class ArvoreAVL {
             return 0;
         return altura(N.esquerda) - altura(N.direita);
     }
+
+    //Rotações
+     private No rotacaoDireita(No y) {
+        No x = y.esquerda;
+        No T2 = x.direita;
+        
+        x.direita = y;
+        y.esquerda = T2;
+
+        y.altura = max(altura(y.esquerda), altura(y.direita)) + 1;
+        x.altura = max(altura(x.esquerda), altura(x.direita)) + 1;
+
+        return x;
+     }
+
 }
