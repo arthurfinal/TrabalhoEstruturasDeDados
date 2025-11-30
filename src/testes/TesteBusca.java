@@ -51,4 +51,18 @@ public class TesteBusca {
 
         return tempoTotal / REPETICOES;
     }
+
+    public static double testarBuscaArvoreAVL(ArvoreAVL arvore, int valor) {
+        Cronometro cronometro = new Cronometro();
+        double tempoTotal = 0;
+
+        for (int r = 0; r < REPETICOES; r++) {
+            cronometro.iniciar();
+            arvore.buscar(valor);
+            cronometro.parar();
+            tempoTotal += cronometro.getTempoEmMilissegundos();
+        }
+
+        return tempoTotal / REPETICOES;
+    }
 }
