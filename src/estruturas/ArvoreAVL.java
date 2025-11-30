@@ -47,4 +47,19 @@ public class ArvoreAVL {
         return x;
      }
 
+     private No rotacaoEsquerda(No x) {
+        No y = x.direita;
+        No T2 = y.esquerda;
+
+        
+        y.esquerda = x;
+        x.direita = T2;
+
+        
+        x.altura = max(altura(x.esquerda), altura(x.direita)) + 1;
+        y.altura = max(altura(y.esquerda), altura(y.direita)) + 1;
+
+        return y;
+    }
+
 }
