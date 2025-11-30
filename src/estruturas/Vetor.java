@@ -17,5 +17,24 @@ public class Vetor {
             System.err.println("Vetor cheio. Não foi possível inserir " + valor);
         }
     }
+
+    public boolean buscar(int valor) {
+        for (int i = 0; i < tamanhoAtual; i++) {
+            if (elementos[i] == valor) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int[] getArray() {
+        int[] arrayCopia = new int[tamanhoAtual];
+        System.arraycopy(elementos, 0, arrayCopia, 0, tamanhoAtual);
+        return arrayCopia;
+    }
+
+    public int getTamanho() {
+        return tamanhoAtual;
+    }
 }
 
