@@ -62,4 +62,43 @@ public class ArvoreAVL {
         return y;
     }
 
+    public void inserir(int valor) {
+    raiz = inserirRecursivo(raiz, valor);
+}
+    // Inserção
+    private No inserirRecursivo(No no, int valor) {
+        if (no == null)
+        return new No(valor);
+
+        if (valor < no.valor)
+        no.esquerda = inserirRecursivo(no.esquerda, valor);
+        else if (valor > no.valor)
+        no.direita = inserirRecursivo(no.direita, valor);
+        else
+        return no;
+
+        no.altura = 1 + max(altura(no.esquerda), altura(no.direita));
+
+        int balanceamento = getFatorBalanceamento(no);
+
+        if (balanceamento > 1 && valor < no.esquerda.valor)
+        return rotacaoDireita(no);
+
+        if (balanceamento < -1 && valor > no.direita.valor)
+        return rotacaoEsquerda(no);
+
+        if (balanceamento > 1 && valor > no.esquerda.valor) {
+        no.esquerda = rotacaoEsquerda(no.esquerda);
+        return rotacaoDireita(no);
+    }
+
+    if (balanceamento < -1 && valor < no.direita.valor) {
+        no.direita = rotacaoDireita(no.direita);
+        return rotacaoEsquerda(no);
+    }
+
+    return no;
+}
+
+
 }
